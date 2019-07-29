@@ -2,6 +2,7 @@ import React from "react";
 import SearchBar from "./SearchBar";
 import itunes from "../apis/itunes";
 import TrackList from "./TrackList";
+import "./base.css";
 
 class App extends React.Component {
   state = { tracks: [] };
@@ -20,7 +21,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <SearchBar onArtistSubmit={this.onArtistSubmit} />
         <TrackList tracks={this.state.tracks} />
       </div>

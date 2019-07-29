@@ -1,0 +1,33 @@
+/* panel */
+.panel {
+  padding: 20px 20px 10px;
+  margin-bottom: 40px;
+  background: #fff;
+  border: 1px solid #fff;
+  -webkit-border-radius: 4px;
+  border-radius: 6px;
+  color: #444;
+  box-shadow: 0 2px 26px 4px rgba(0, 0, 0, 0.1);
+}
+
+.panel h3 {
+  margin: 0 0 20px;
+}
+
+.panel p {
+  font-size: 1rem;
+  line-height: 1.75rem;
+}
+
+.panel .image-holder {
+  margin: 0 -20px 10px;
+}
+
+.panel figure {
+  margin: 0 -20px 10px;
+}
+
+.panel figure .filler > img {
+  width: 102%;
+  max-width: 102%;
+}

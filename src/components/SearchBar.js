@@ -14,16 +14,16 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <div>
+      <div className="grid">
+        <form onSubmit={this.onSubmit}>
           <label>Video Search</label>
           <input
             type="text"
             value={this.state.artist}
             onChange={this.onChange}
           />
-        </div>
-      </form>
+        </form>
+      </div>
     );
   }
 }
