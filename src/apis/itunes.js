@@ -3,7 +3,7 @@ import axios from "axios";
 export default axios.create({
   baseURL: "http://itunes.apple.com",
   params: {
-    entity: "musicTrack",
+    entity: "music",
     limit: 25
   }
 });

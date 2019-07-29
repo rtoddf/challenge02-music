@@ -5,7 +5,11 @@ import TrackList from "./TrackList";
 import "./base.css";
 
 class App extends React.Component {
-  state = { tracks: [] };
+  state = { tracks: [], initialArtist: "" };
+
+  componentDidMount() {
+    this.onArtistSubmit("Taylor Swift");
+  }
 
   onArtistSubmit = async artist => {
     const response = await itunes.get("/search", {

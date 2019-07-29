@@ -1,0 +1,42 @@
+.jukebox-card {
+  background: white;
+  border: 1px solid #666;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.jukebox-card .inner {
+  display: flex;
+  align-items: center;
+  background: #666;
+  color: #ccc;
+}
+
+.jukebox-card .song-artwork {
+  height: 100px;
+}
+
+.jukebox-card .song-artwork img {
+  border: none;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.jukebox-card .song-info {
+  flex: 1 1 0;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.jukebox-card .song-info p {
+  margin: 0;
+  padding: 0;
+  font-size: 0.875rem;
+}
+
+.jukebox-card .song-info p:first-child {
+  color: #fff;
+  font-weight: bold;
+}
+
+/* .jukebox-card .song-info p:nth-child(odd) {
+  background: rgba(221, 133, 253, 1);
+} */
