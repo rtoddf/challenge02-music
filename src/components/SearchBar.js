@@ -9,7 +9,7 @@ class SearchBar extends React.Component {
 
   onSubmit = event => {
     event.preventDefault();
-    console.log(this.state.artist);
+    this.props.onArtistSubmit(this.state.artist);
   };
 
   render() {
