@@ -1,6 +1,7 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 import itunes from "../apis/itunes";
+import TrackList from "./TrackList";
 
 class App extends React.Component {
   state = { tracks: [] };
@@ -21,6 +22,7 @@ class App extends React.Component {
     return (
       <div>
         <SearchBar onArtistSubmit={this.onArtistSubmit} />
+        <TrackList tracks={this.state.tracks} />
       </div>
     );
   }
