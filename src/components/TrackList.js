@@ -2,9 +2,11 @@ import React from "react";
 import TrackItem from "./TrackItem";
 import "./tracks.css";
 
-const TrackList = ({ tracks }) => {
+const TrackList = ({ tracks, onTrackPlay }) => {
   const items = tracks.map(track => {
-    return <TrackItem key={track.trackId} track={track} />;
+    return (
+      <TrackItem key={track.trackId} track={track} onTrackPlay={onTrackPlay} />
+    );
   });
 
   return (

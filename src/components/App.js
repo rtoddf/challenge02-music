@@ -9,7 +9,17 @@ class App extends React.Component {
 
   componentDidMount() {
     this.onArtistSubmit("AJR");
+
+    const snd = new Audio(
+      "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview113/v4/0c/de/ce/0cdececd-3190-15cb-6b42-4aa91b685447/mzaf_5059055180140462703.plus.aac.p.m4a"
+    );
+
+    // snd.play();
   }
+
+  onTrackPlay = track => {
+    console.log("click: ", track);
+  };
 
   onArtistSubmit = async artist => {
     const response = await itunes.get("/search", {
@@ -23,13 +33,15 @@ class App extends React.Component {
     });
 
     this.setState({ tracks: response.data.results.slice(0, 12) });
+
+    console.log(response.data.results);
   };
 
   render() {
     return (
       <div className="container">
         <SearchBar onArtistSubmit={this.onArtistSubmit} />
-        <TrackList tracks={this.state.tracks} />
+        <TrackList tracks={this.state.tracks} onTrackPlay={this.onTrackPlay} />
       </div>
     );
   }
