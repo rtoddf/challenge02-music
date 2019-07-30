@@ -5,20 +5,30 @@ import TrackList from "./TrackList";
 import "./base.css";
 
 class App extends React.Component {
-  state = { tracks: [], initialArtist: "" };
+  state = { tracks: [], initialArtist: "", trackPlaying: "", playing: false };
+
+  // constructor() {
+  //   super();
+  //   const snd = new Audio(this.state.trackPlaying);
+  // }
 
   componentDidMount() {
     this.onArtistSubmit("AJR");
-
-    const snd = new Audio(
-      "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview113/v4/0c/de/ce/0cdececd-3190-15cb-6b42-4aa91b685447/mzaf_5059055180140462703.plus.aac.p.m4a"
-    );
-
-    // snd.play();
+    const snd = new Audio(this.state.trackPlaying);
   }
 
   onTrackPlay = track => {
     console.log("click: ", track);
+
+    this.setState({ trackPlaying: track });
+
+    if (!this.playing) {
+      this.snd.play();
+      this.setState({ playing: true });
+    } else {
+      this.snd.pause();
+      this.setState({ playing: false });
+    }
   };
 
   onArtistSubmit = async artist => {

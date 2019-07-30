@@ -3,7 +3,9 @@ import Moment from "react-moment";
 import "./trackItem.css";
 
 class TrackItem extends React.Component {
-  // state = { trackUrl: "" };
+  onClick = () => {
+    this.props.onTrackPlay(this.props.track.previewUrl);
+  };
 
   render() {
     return (
@@ -13,7 +15,7 @@ class TrackItem extends React.Component {
             <img
               src={this.props.track.artworkUrl100}
               alt={this.props.track.trackName}
-              // onClick={onTrackPlay}
+              onClick={this.onClick}
             />
           </div>
           <div className="song-info">
