@@ -7,27 +7,25 @@ import "./base.css";
 class App extends React.Component {
   state = { tracks: [], initialArtist: "", trackPlaying: "", playing: false };
 
-  // constructor() {
-  //   super();
-  //   const snd = new Audio(this.state.trackPlaying);
-  // }
-
   componentDidMount() {
     this.onArtistSubmit("AJR");
-    const snd = new Audio(this.state.trackPlaying);
   }
 
   onTrackPlay = track => {
-    console.log("click: ", track);
-
     this.setState({ trackPlaying: track });
 
-    if (!this.playing) {
-      this.snd.play();
+    var audio = document.querySelector("#audio");
+    var source = document.querySelector("#audioSource");
+    source.src = track;
+
+    audio.load();
+
+    if (!this.state.playing) {
       this.setState({ playing: true });
+      audio.play();
     } else {
-      this.snd.pause();
       this.setState({ playing: false });
+      audio.pause();
     }
   };
 
@@ -50,6 +48,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
+        <audio id="audio" controls="controls">
+          <source id="audioSource" src={this.state.trackPlaying} />
+          Your browser does not support the audio format.
+        </audio>
+
         <SearchBar onArtistSubmit={this.onArtistSubmit} />
         <TrackList tracks={this.state.tracks} onTrackPlay={this.onTrackPlay} />
       </div>

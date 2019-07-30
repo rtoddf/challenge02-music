@@ -3,10 +3,6 @@ import Moment from "react-moment";
 import "./trackItem.css";
 
 class TrackItem extends React.Component {
-  onClick = () => {
-    this.props.onTrackPlay(this.props.track.previewUrl);
-  };
-
   render() {
     return (
       <div key={this.props.track.key} className="jukebox-card">
@@ -15,7 +11,9 @@ class TrackItem extends React.Component {
             <img
               src={this.props.track.artworkUrl100}
               alt={this.props.track.trackName}
-              onClick={this.onClick}
+              onClick={() => {
+                this.props.onTrackPlay(this.props.track.previewUrl);
+              }}
             />
           </div>
           <div className="song-info">
@@ -27,9 +25,6 @@ class TrackItem extends React.Component {
             <p>{this.props.track.primaryGenreName}</p>
           </div>
         </div>
-        <audio controls>
-          <source src={this.props.track.previewUrl} />
-        </audio>
       </div>
     );
   }
