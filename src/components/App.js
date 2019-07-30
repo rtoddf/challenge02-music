@@ -8,7 +8,7 @@ class App extends React.Component {
   state = { tracks: [], initialArtist: "" };
 
   componentDidMount() {
-    this.onArtistSubmit("AJR");
+    this.onArtistSubmit("Taylor Swift");
   }
 
   onArtistSubmit = async artist => {
@@ -18,14 +18,14 @@ class App extends React.Component {
       }
     });
 
-    // const sorted = response.data.results.sort((a, b) => {
-    //   console.log("a.releaseDate: ", a.releaseDate);
-    //   return a.releaseDate > b.releaseDate;
-    // });
+    const sorted = response.data.results.sort((a, b) => {
+      console.log("a.releaseDate: ", a.releaseDate);
+      return a.releaseDate > b.releaseDate;
+    });
 
-    // console.log("sorted: ", sorted);
+    console.log("sorted: ", sorted);
 
-    this.setState({ tracks: response.data.results.slice(0, 12) });
+    this.setState({ tracks: response.data.results.slice(0, 50) });
 
     console.log("tracks: ", this.state.tracks);
   };
