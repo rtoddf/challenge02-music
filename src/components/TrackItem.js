@@ -17,6 +17,9 @@ const TrackItem = ({ track }) => {
           <p>{track.primaryGenreName}</p>
         </div>
       </div>
+      <audio controls>
+        <source src={track.previewUrl} />
+      </audio>
     </div>
   );
 };
