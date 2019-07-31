@@ -6,28 +6,36 @@ import AudioPlayer from "./AudioPlayer";
 import "./base.css";
 
 class App extends React.Component {
-  state = { tracks: [], initialArtist: "", trackPlaying: "", playing: false };
+  state = {
+    tracks: [],
+    initialArtist: "",
+    trackPlaying: "",
+    trackToPlay: "",
+    isPlaying: false
+  };
 
   componentDidMount() {
     this.onArtistSubmit("AJR");
   }
 
-  onTrackPlay = track => {
+  onTrackPlay = (event, track) => {
+    console.log("event: ", event.type);
+
     if (track.previewUrl) {
       var audio = document.querySelector("#audio");
       var source = document.querySelector("#audioSource");
 
-      if (track.previewUrl !== this.state.trackPlaying) {
-        this.setState({ trackPlaying: track.previewUrl });
+      if (track !== this.state.trackPlaying) {
+        this.setState({ trackPlaying: track });
         source.src = track.previewUrl;
         audio.load();
       }
 
-      if (!this.state.playing) {
-        this.setState({ playing: true });
+      if (!this.state.isPlaying) {
+        this.setState({ isPlaying: true });
         audio.play();
       } else {
-        this.setState({ playing: false });
+        this.setState({ isPlaying: false });
         audio.pause();
       }
     }
@@ -52,8 +60,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <AudioPlayer audioSource={this.state.trackPlaying} />
         <SearchBar onArtistSubmit={this.onArtistSubmit} />
+        <AudioPlayer
+          audioSource={this.state.trackPlaying}
+          isPlaying={this.state.isPlaying}
+        />
         <TrackList tracks={this.state.tracks} onTrackPlay={this.onTrackPlay} />
       </div>
     );

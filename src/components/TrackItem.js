@@ -11,8 +11,8 @@ class TrackItem extends React.Component {
             <img
               src={this.props.track.artworkUrl100}
               alt={this.props.track.trackName}
-              onClick={() => {
-                this.props.onTrackPlay(this.props.track);
+              onClick={e => {
+                this.props.onTrackPlay(e, this.props.track);
               }}
             />
           </div>
