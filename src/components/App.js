@@ -31,13 +31,8 @@ class App extends React.Component {
         audio.load();
       }
 
-      if (!this.state.isPlaying) {
-        this.setState({ isPlaying: true });
-        audio.play();
-      } else {
-        this.setState({ isPlaying: false });
-        audio.pause();
-      }
+      this.setState({ isPlaying: !this.state.isPlaying });
+      !this.state.isPlaying ? audio.play() : audio.pause();
     }
   };
 
