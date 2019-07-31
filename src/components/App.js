@@ -2,6 +2,7 @@ import React from "react";
 import SearchBar from "./SearchBar";
 import itunes from "../apis/itunes";
 import TrackList from "./TrackList";
+import AudioPlayer from "./AudioPlayer";
 import "./base.css";
 
 class App extends React.Component {
@@ -17,8 +18,6 @@ class App extends React.Component {
       var source = document.querySelector("#audioSource");
 
       if (track.previewUrl !== this.state.trackPlaying) {
-        console.log("new song");
-
         this.setState({ trackPlaying: track.previewUrl });
         source.src = track.previewUrl;
         audio.load();
@@ -53,11 +52,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <audio id="audio">
-          <source id="audioSource" src={this.state.trackPlaying} />
-          Your browser does not support the audio format.
-        </audio>
-
+        <AudioPlayer audioSource={this.state.trackPlaying} />
         <SearchBar onArtistSubmit={this.onArtistSubmit} />
         <TrackList tracks={this.state.tracks} onTrackPlay={this.onTrackPlay} />
       </div>
