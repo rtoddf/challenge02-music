@@ -12,7 +12,7 @@ class TrackItem extends React.Component {
               src={this.props.track.artworkUrl100}
               alt={this.props.track.trackName}
               onClick={() => {
-                this.props.onTrackPlay(this.props.track.previewUrl);
+                this.props.onTrackPlay(this.props.track);
               }}
             />
           </div>

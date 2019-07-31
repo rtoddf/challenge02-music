@@ -8,27 +8,29 @@ class App extends React.Component {
   state = { tracks: [], initialArtist: "", trackPlaying: "", playing: false };
 
   componentDidMount() {
-    this.onArtistSubmit("prince");
+    this.onArtistSubmit("AJR");
   }
 
   onTrackPlay = track => {
-    var audio = document.querySelector("#audio");
-    var source = document.querySelector("#audioSource");
+    if (track.previewUrl) {
+      var audio = document.querySelector("#audio");
+      var source = document.querySelector("#audioSource");
 
-    if (track !== this.state.trackPlaying) {
-      console.log("new song");
+      if (track.previewUrl !== this.state.trackPlaying) {
+        console.log("new song");
 
-      this.setState({ trackPlaying: track });
-      source.src = track;
-      audio.load();
-    }
+        this.setState({ trackPlaying: track.previewUrl });
+        source.src = track.previewUrl;
+        audio.load();
+      }
 
-    if (!this.state.playing) {
-      this.setState({ playing: true });
-      audio.play();
-    } else {
-      this.setState({ playing: false });
-      audio.pause();
+      if (!this.state.playing) {
+        this.setState({ playing: true });
+        audio.play();
+      } else {
+        this.setState({ playing: false });
+        audio.pause();
+      }
     }
   };
 
@@ -51,7 +53,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <audio id="audio" controls="controls">
+        <audio id="audio">
           <source id="audioSource" src={this.state.trackPlaying} />
           Your browser does not support the audio format.
         </audio>
