@@ -8,17 +8,20 @@ class App extends React.Component {
   state = { tracks: [], initialArtist: "", trackPlaying: "", playing: false };
 
   componentDidMount() {
-    this.onArtistSubmit("AJR");
+    this.onArtistSubmit("prince");
   }
 
   onTrackPlay = track => {
-    this.setState({ trackPlaying: track });
-
     var audio = document.querySelector("#audio");
     var source = document.querySelector("#audioSource");
-    source.src = track;
 
-    audio.load();
+    if (track !== this.state.trackPlaying) {
+      console.log("new song");
+
+      this.setState({ trackPlaying: track });
+      source.src = track;
+      audio.load();
+    }
 
     if (!this.state.playing) {
       this.setState({ playing: true });
