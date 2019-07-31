@@ -7,7 +7,6 @@ class AudioPlayer extends React.Component {
     console.log("this.props.isPlaying: ", this.props.isPlaying);
 
     if (this.props.audioSource.previewUrl) {
-      console.log("boop");
     }
 
     return (

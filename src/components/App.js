@@ -19,7 +19,7 @@ class App extends React.Component {
   }
 
   onTrackPlay = (event, track) => {
-    console.log("event: ", event.type);
+    // console.log("event: ", event.type);
 
     if (track.previewUrl) {
       var audio = document.querySelector("#audio");
@@ -32,7 +32,7 @@ class App extends React.Component {
       }
 
       this.setState({ isPlaying: !this.state.isPlaying });
-      !this.state.isPlaying ? audio.play() : audio.pause();
+      // !this.state.isPlaying ? audio.play() : audio.pause();
     }
   };
 
