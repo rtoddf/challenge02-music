@@ -18,8 +18,8 @@ class App extends React.Component {
     this.onArtistSubmit("AJR");
   }
 
-  onTrackPlay = (event, track) => {
-    // console.log("event: ", event.type);
+  onTrackPlay = (event, track, playing) => {
+    console.log("playing: ", playing);
 
     if (track.previewUrl) {
       var audio = document.querySelector("#audio");
@@ -31,8 +31,7 @@ class App extends React.Component {
         audio.load();
       }
 
-      this.setState({ isPlaying: !this.state.isPlaying });
-      // !this.state.isPlaying ? audio.play() : audio.pause();
+      playing ? audio.play() : audio.pause();
     }
   };
 
@@ -56,10 +55,7 @@ class App extends React.Component {
     return (
       <div className="container">
         <SearchBar onArtistSubmit={this.onArtistSubmit} />
-        <AudioPlayer
-          audioSource={this.state.trackPlaying}
-          isPlaying={this.state.isPlaying}
-        />
+        <AudioPlayer audioSource={this.state.trackPlaying} />
         <TrackList tracks={this.state.tracks} onTrackPlay={this.onTrackPlay} />
       </div>
     );
