@@ -1,4 +1,5 @@
 import React from "react";
+import "./searchBar.css";
 
 class SearchBar extends React.Component {
   state = { artist: "" };
@@ -14,14 +15,17 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div className="grid">
+      <div className="grid artist-submit">
         <form onSubmit={this.onSubmit}>
-          <label>Artist Search</label>
-          <input
-            type="text"
-            value={this.state.artist}
-            onChange={this.onChange}
-          />
+          <div className="ui big icon input">
+            <input
+              type="text"
+              placeholder="Search for an Artist"
+              value={this.state.artist}
+              onChange={this.onChange}
+            />
+            <i className="search icon" />
+          </div>
         </form>
       </div>
     );
