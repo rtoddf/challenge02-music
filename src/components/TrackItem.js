@@ -6,9 +6,21 @@ class TrackItem extends React.Component {
   state = { isPlaying: true, isActive: true };
 
   onClick = e => {
-    this.setState({ isPlaying: !this.state.isPlaying });
+    // remove all active classes
+    // isPLaying is off if played while something else is playing
+    var elems = document.querySelectorAll(".jukebox-card");
+
+    [].forEach.call(elems, function(el) {
+      el.classList.remove("active");
+      el.classList.add("non-active");
+    });
+
+    this.setState({
+      isPlaying: !this.state.isPlaying,
+      isActive: !this.state.isActive
+    });
     this.props.onTrackPlay(e, this.props.track, this.state.isPlaying);
-    this.setState({ isActive: !this.state.isActive });
+    // this.setState({ isActive: !this.state.isActive });
   };
 
   render() {
