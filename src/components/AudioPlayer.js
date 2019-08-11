@@ -11,11 +11,8 @@ class AudioPlayer extends React.Component {
   };
 
   render() {
-    if (this.props.audioSource.previewUrl) {
-    }
-
-    console.log("this.props.audioSource: ", this.props.audioSource);
-    console.log("this.props.playing: ", this.props.playing);
+    // if (this.props.audioSource.previewUrl) {
+    // }
 
     return (
       <div className="grid audio-player">
@@ -23,6 +20,15 @@ class AudioPlayer extends React.Component {
           <source id="audioSource" src={this.props.audioSource.previewUrl} />
           Your browser does not support the audio format.
         </audio>
+
+        <p className={!this.props.noResults ? "show" : "hidden"}>
+          Click on any track below to hear a sample.
+        </p>
+
+        <h3 className={this.props.noResults ? "show" : "hidden"}>
+          No Results. Please try another artist.
+        </h3>
+
         <h3 className={this.props.playing ? "show" : "hidden"}>
           Now Playing: {this.props.audioSource.trackName} by{" "}
           {this.props.audioSource.artistName}

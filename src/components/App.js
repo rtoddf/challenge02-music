@@ -8,6 +8,7 @@ import "./base.css";
 class App extends React.Component {
   state = {
     tracks: [],
+    nonResults: false,
     initialArtist: "",
     trackPlaying: "",
     trackToPlay: "",
@@ -46,9 +47,16 @@ class App extends React.Component {
       return new Date(b.releaseDate) - new Date(a.releaseDate);
     });
 
-    this.setState({ tracks: response.data.results.slice(0, 12) });
+    this.setState({
+      tracks: response.data.results.slice(0, 12),
+      noResults: false
+    });
 
     console.log(response.data.results);
+
+    if (response.data.results.length === 0) {
+      this.setState({ noResults: true });
+    }
   };
 
   render() {
@@ -61,6 +69,7 @@ class App extends React.Component {
         <AudioPlayer
           audioSource={this.state.trackPlaying}
           playing={this.state.isPlaying}
+          noResults={this.state.noResults}
         />
         <TrackList tracks={this.state.tracks} onTrackPlay={this.onTrackPlay} />
       </div>
