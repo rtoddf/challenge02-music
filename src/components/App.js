@@ -26,7 +26,7 @@ class App extends React.Component {
       var source = document.querySelector("#audioSource");
 
       if (track !== this.state.trackPlaying) {
-        this.setState({ trackPlaying: track });
+        this.setState({ trackPlaying: track, isPlaying: playing });
         source.src = track.previewUrl;
         audio.load();
       }
@@ -54,8 +54,14 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
+        <div className="grid headline">
+          <h2>Challenge 01 - Artist Search</h2>
+        </div>
         <SearchBar onArtistSubmit={this.onArtistSubmit} />
-        <AudioPlayer audioSource={this.state.trackPlaying} />
+        <AudioPlayer
+          audioSource={this.state.trackPlaying}
+          playing={this.state.isPlaying}
+        />
         <TrackList tracks={this.state.tracks} onTrackPlay={this.onTrackPlay} />
       </div>
     );

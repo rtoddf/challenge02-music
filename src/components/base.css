@@ -46,7 +46,6 @@ h4,
 h5,
 h6 {
   margin-bottom: 0.625rem;
-  font-family: "Average", serif;
   font-weight: normal;
 }
 
@@ -100,6 +99,11 @@ figcaption {
   font-size: 0.75rem;
   font-weight: 300;
   line-height: 1rem;
+}
+
+.grid.headline {
+  margin-bottom: 0;
+  text-align: center;
 }
 
 .container {
