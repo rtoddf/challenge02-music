@@ -12,7 +12,8 @@ class App extends React.Component {
     initialArtist: "",
     trackPlaying: "",
     trackToPlay: "",
-    isPlaying: false
+    isPlaying: false,
+    isPaused: false
   };
 
   componentDidMount() {
@@ -26,10 +27,16 @@ class App extends React.Component {
       var audio = document.querySelector("#audio");
       var source = document.querySelector("#audioSource");
 
+      this.setState({ trackPlaying: track });
+
       if (track !== this.state.trackPlaying) {
-        this.setState({ trackPlaying: track, isPlaying: playing });
         source.src = track.previewUrl;
         audio.load();
+      }
+
+      if (track === this.state.trackPlaying && !playing) {
+        console.log("paused");
+        this.setState({ isPlaying: false });
       }
 
       playing ? audio.play() : audio.pause();

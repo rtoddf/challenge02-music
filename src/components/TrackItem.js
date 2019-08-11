@@ -3,7 +3,12 @@ import Moment from "react-moment";
 import "./trackItem.css";
 
 class TrackItem extends React.Component {
-  state = { isPlaying: true, isActive: true };
+  state = {
+    trackPlaying: "",
+    isPlaying: true,
+    isActive: true,
+    isPaused: false
+  };
 
   onClick = e => {
     // remove all active classes
@@ -16,9 +21,11 @@ class TrackItem extends React.Component {
     });
 
     this.setState({
+      trackPlaying: this.props.track.trackName,
       isPlaying: !this.state.isPlaying,
       isActive: !this.state.isActive
     });
+
     this.props.onTrackPlay(e, this.props.track, this.state.isPlaying);
     // this.setState({ isActive: !this.state.isActive });
   };
@@ -27,6 +34,7 @@ class TrackItem extends React.Component {
     return (
       <div
         key={this.props.track.key}
+        onClick={this.onClick}
         className={`jukebox-card ${
           this.state.isActive ? "non-active" : "active"
         }`}
@@ -36,7 +44,6 @@ class TrackItem extends React.Component {
             <img
               src={this.props.track.artworkUrl100}
               alt={this.props.track.trackName}
-              onClick={this.onClick}
             />
           </div>
           <div className="song-info">
