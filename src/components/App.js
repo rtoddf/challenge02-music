@@ -28,6 +28,7 @@ class App extends React.Component {
       this.setState({ trackPlaying: track });
 
       if (track !== this.state.trackPlaying) {
+        this.setState({ trackPlaying: track, isPlaying: playing });
         source.src = track.previewUrl;
         audio.load();
       }
