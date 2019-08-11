@@ -21,8 +21,6 @@ class App extends React.Component {
   }
 
   onTrackPlay = (event, track, playing) => {
-    console.log("playing: ", playing);
-
     if (track.previewUrl) {
       var audio = document.querySelector("#audio");
       var source = document.querySelector("#audioSource");
@@ -34,10 +32,10 @@ class App extends React.Component {
         audio.load();
       }
 
-      if (track === this.state.trackPlaying && !playing) {
-        console.log("paused");
-        this.setState({ isPlaying: false });
-      }
+      // if (track === this.state.trackPlaying && !playing) {
+      //   console.log("paused");
+      //   this.setState({ isPlaying: false });
+      // }
 
       playing ? audio.play() : audio.pause();
     }
@@ -55,7 +53,7 @@ class App extends React.Component {
     });
 
     this.setState({
-      tracks: response.data.results.slice(0, 12),
+      tracks: response.data.results.slice(0, 10),
       noResults: false
     });
 

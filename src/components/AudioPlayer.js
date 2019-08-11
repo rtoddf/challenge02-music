@@ -14,6 +14,8 @@ class AudioPlayer extends React.Component {
     // if (this.props.audioSource.previewUrl) {
     // }
 
+    console.log("for headline: ", this.props.playing);
+
     return (
       <div className="grid audio-player">
         <audio id="audio">

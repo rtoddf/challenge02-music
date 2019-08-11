@@ -7,7 +7,7 @@ class TrackItem extends React.Component {
     trackPlaying: "",
     isPlaying: true,
     isActive: true,
-    isPaused: false
+    pauseIcon: "play"
   };
 
   onClick = e => {
@@ -20,10 +20,18 @@ class TrackItem extends React.Component {
       el.classList.add("non-active");
     });
 
+    var icons = document.querySelectorAll(".jukebox-card i");
+
+    [].forEach.call(icons, function(el) {
+      el.classList.remove("pause");
+      el.classList.add("play");
+    });
+
     this.setState({
       trackPlaying: this.props.track.trackName,
       isPlaying: !this.state.isPlaying,
-      isActive: !this.state.isActive
+      isActive: !this.state.isActive,
+      pauseIcon: this.state.isPlaying ? "pause" : "play"
     });
 
     this.props.onTrackPlay(e, this.props.track, this.state.isPlaying);
@@ -41,6 +49,7 @@ class TrackItem extends React.Component {
       >
         <div className="inner">
           <div className="song-artwork">
+            <i className={`${this.state.pauseIcon} icon`} />
             <img
               src={this.props.track.artworkUrl100}
               alt={this.props.track.trackName}
